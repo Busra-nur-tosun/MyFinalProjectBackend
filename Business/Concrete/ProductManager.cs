@@ -2,12 +2,9 @@
 using Business.Constants;
 using Business.Abstract;
 
-using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
-
 using Core.Aspects.Autofac.Validation;
-
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
