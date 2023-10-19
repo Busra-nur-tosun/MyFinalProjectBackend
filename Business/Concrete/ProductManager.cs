@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Business.BusinessAspects.Autofac;
 
 namespace Business.Concrete
 {
@@ -30,6 +31,7 @@ namespace Business.Concrete
             _categoryService = categoryService;
         }
         [ValidationAspect(typeof (ProductValidator))]
+        [SecuredOperation("product,add,admin")]
         public IResult  Add(Product product)//add methodunu doğrula productvalidator daki kurallara göre 
         {
 
