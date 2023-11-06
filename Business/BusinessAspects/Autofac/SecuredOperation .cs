@@ -1,41 +1,42 @@
 ﻿using Core.Utilities.Interceptors;
-using Core.Utilities.IOC;
+using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
-using Core.Extentions;
+using Microsoft.AspNetCore.Http;
 using Business.Constants;
+using Core.Extensions;
 
 namespace Business.BusinessAspects.Autofac
 {
-    public class SecuredOperation : MethodInterception
-    {
-        private string[] _roles;
-        private IHttpContextAccessor _httpContextAccessor;
-
-        public SecuredOperation(string roles)
+   
+        //Bu class’in amaci AOP olarak ilgili operasyonlarin tanimlanabilmesini saglamaktir.
+        public class SecuredOperation : MethodInterception
         {
-            _roles = roles.Split(',');
-            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
+            private string[] _roles;
+            private IHttpContextAccessor _httpContextAccessor;
 
-        }
-
-        protected override void OnBefore(IInvocation invocation)
-        {
-            var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
-            foreach (var role in _roles)
+            public SecuredOperation(string roles)
             {
-                if (roleClaims.Contains(role))
-                {
-                    return;
-                }
+                _roles = roles.Split(',');
+                _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
             }
-            throw new Exception(Messages.AuthorizationDenied);
+
+            protected override void OnBefore(IInvocation invocation)
+            {
+                var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
+                foreach (var role in _roles)
+                {
+                    if (roleClaims.Contains(role))
+                    {
+                        return;
+                    }
+                }
+                throw new Exception(Messages.AuthorizationDenied);
+            }
         }
-    }
+    
 }

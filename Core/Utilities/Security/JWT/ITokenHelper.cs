@@ -1,16 +1,14 @@
 ﻿using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Utilities.Security.JWT
 {
-     public interface ITokenHelper
+    public interface ITokenHelper
     {
-        AccessToken CreateToken(User user, List<OperationClaim> operationcClaims);
-            
+        //Bu interface'in amaci test ederken bir token verilmesi ya da baska bir teknik ile token üretilebilecegini göz önüne almaktir.
 
+        AccessToken CreateToken(User user, List<OperationClaim> operationClaims);
     }
 }

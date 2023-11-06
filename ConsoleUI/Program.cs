@@ -2,6 +2,7 @@
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using System;
+using static DataAccess.Concrete.EntityFramework.EfProductDal;
 
 namespace ConsoleUI
 {
@@ -16,22 +17,83 @@ namespace ConsoleUI
             }
         }
 
-        private static void ProductTest()
+        private static void GetAllProductWithCategoryNameTest()
         {
-            ProductManager productManager = new ProductManager(new EfProductDal(),new CategoryManager(new EfCategoryDal()));
+            ProductManager productManager = new ProductManager(new EfProductDal(), new CategoryManager(new EfCategoryDal()));
+
             var result = productManager.GetProductDetails();
-            if (result.Success==true)
+
+            if (result.Success)
             {
-                foreach (var product in productManager.GetProductDetails().Data)
+                Console.WriteLine("{0,35} -- {1,15} -- {2,5} \n", "ProductName", "CategoryName", "Stock");
+                foreach (var product in result.Data)
                 {
-                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                    Console.WriteLine("{0,35} -- {1,15} -- {2,5}", product.ProductName, product.CategoryName, product.UnitsInStock);
                 }
             }
             else
             {
                 Console.WriteLine(result.Message);
             }
-            
+        }
+
+        private static void GetAllOrderByShipCityTest()
+        {
+            OrderManager orderManager = new OrderManager(new EfOrderDal());
+
+            Console.WriteLine("*************** Order List *********************");
+            foreach (var order in orderManager.GetAll())
+            {
+                Console.WriteLine(order.ShipCity);
+            }
+        }
+
+        private static void GetAllCategoryTest()
+        {
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+
+            Console.WriteLine("*************** Category List *********************");
+            foreach (var category in categoryManager.GetAll().Data)
+            {
+                Console.WriteLine(category.CategoryName);
+            }
+        }
+
+        private static void GetAllPersonelListTest()
+        {
+            PersonelManager personelManager = new PersonelManager(new EfPersonelDal());
+
+            Console.WriteLine("{0,3} {1,10} {2,20}", "Id", "Personel Name", "Personel Surname");
+            foreach (var personel in personelManager.GetAll())
+            {
+                Console.WriteLine("{0,3} {1,10} {2,16}", personel.Id, personel.Name, personel.Surname);
+            }
+        }
+
+        private static void GetAllProductTest()
+        {
+            //ProductManager productManager = new ProductManager(new InMemoryProductDal());
+            ProductManager
+                productManager =
+                    new ProductManager(new EfProductDal(), new CategoryManager(new EfCategoryDal())); //Sadece kullanimdaki teknolojiyi cagirmamiz yeterli
+
+            Console.WriteLine("{0,35} -- {1,5} -- {2,5}\n", "Product Name", "Price($)", "Stock");
+            foreach (var product in productManager.GetList().Data)
+            {
+                Console.WriteLine("{0,35} -- {1,8} -- {2,5}", product.ProductName, product.UnitPrice,
+                    product.UnitsInStock);
+            }
+        }
+
+        private static void GetAllProductByCategoryIdTest(int categoryId)
+        {
+            ProductManager productManager = new ProductManager(new EfProductDal(), new CategoryManager(new EfCategoryDal()));
+
+            Console.WriteLine("{0} numarali categoriye ait ürün isimleri gelsin\n", categoryId);
+            foreach (var product in productManager.GetListByCategory(categoryId).Data)
+            {
+                Console.WriteLine(product.ProductName);
+            }
         }
     }
 }

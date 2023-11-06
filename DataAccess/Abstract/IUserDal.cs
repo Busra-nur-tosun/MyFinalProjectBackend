@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataAccess.Abstract
 {
     public interface IUserDal : IEntityRepository<User>
-    {
+    {//Db'den claim'leri cekmek icin ve join atmak amaciyla olusturuldu.
         List<OperationClaim> GetClaims(User user);
     }
 }

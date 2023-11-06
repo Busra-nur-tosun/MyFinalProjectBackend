@@ -4,10 +4,6 @@ using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
@@ -15,34 +11,26 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+        //Loosely Coupled
         IProductService _productService;
-       
+
         public ProductsController(IProductService productService)
         {
             _productService = productService;
         }
 
         [HttpGet("getall")]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
-          var result = _productService.GetAll();
+            var result = _productService.GetList();
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-        [HttpPost("add")]
-        public IActionResult Add(Product product)
-        {
-            var result = _productService.Add(product);
-            if (result.Success)
-            {
-                return Ok();
-            }
-            return BadRequest(result);
-        }
-        [HttpGet("getbyıd")]
+
+        [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
             var result = _productService.GetById(id);
@@ -52,5 +40,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+         [HttpPost("add")]
+        public IActionResult Add(Product product)
+        {
+            var result = _productService.Add(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }

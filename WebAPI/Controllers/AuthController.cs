@@ -1,6 +1,5 @@
 ﻿using Business.Abstract;
 using Entities.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class AuthController : Controller
     {
-        private IAuthService _authService;
+        private readonly IAuthService _authService;
 
         public AuthController(IAuthService authService)
         {

@@ -1,17 +1,13 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Utilities.Security.Encryption
 {
-    public class SigningCredentialsHelper
-    {
-        public static SigningCredentials CreateSigningCredentials(SecurityKey securityKey)
+ 
+        //JWT de kullanilacak key'in dogrulanmasi
+        public class SigningCredentialsHelper
         {
-            return new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512Signature);
+            public static SigningCredentials CreateSigningCredentials(SecurityKey securityKey) =>
+                new(securityKey, SecurityAlgorithms.HmacSha512Signature);
         }
-    }
+    
 }

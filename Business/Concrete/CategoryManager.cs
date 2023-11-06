@@ -12,26 +12,23 @@ namespace Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-
-        ICategoryDal _categoryDal;
+        private ICategoryDal _categoryDal;
 
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
         }
 
-
-
         public IDataResult<List<Category>> GetAll()
         {
-            //İş kodları
+            //Is kodlari
             return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
         }
 
-        IDataResult<Category> ICategoryService.GetById(int categoryId)
+        //Select * from Categories where CategoryId=3
+        public IDataResult<Category> GetById(int categoryId)
         {
             return new SuccessDataResult<Category>(_categoryDal.Get(c => c.CategoryId == categoryId));
-
         }
     }
 }
