@@ -1,0 +1,1 @@
+Engin Demiroğun yazılım geliştirme kampı  sonucunda C# + Angular ile yapılan kamp videoları sonucunda kurumsal ve katmanlı mimari yazılarak  backend kısmı yazıldı.Solid prensiplerine ve clean koda özen gösterildi. 
