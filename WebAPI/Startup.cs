@@ -40,6 +40,7 @@ namespace WebAPI
         {
 
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
@@ -47,7 +48,7 @@ namespace WebAPI
             /*  services.AddSingleton<IProductService,ProductManager>();*///ýproductservice verildiðinde arka planda ProductManager veriliri
                                                                           //services.AddSingleton<IProductDal, EfProductDal >();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddCors();
+          
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -78,7 +79,7 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
-
+            app.UseCors(builder=>builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseHttpsRedirection();
 
             app.UseRouting();

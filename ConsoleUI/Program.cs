@@ -2,98 +2,50 @@
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using System;
-using static DataAccess.Concrete.EntityFramework.EfProductDal;
 
 namespace ConsoleUI
 {
+    //SOLID
+    //Open Closed Principle
     class Program
     {
         static void Main(string[] args)
         {
-            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            foreach(var category in categoryManager.GetAll().Data)
-            {
-                Console.WriteLine(category.CategoryName);
-            }
+            //Data Transformation Object
+            ProductTest();
+            //IoC 
+            //CategoryTest();
         }
 
-        private static void GetAllProductWithCategoryNameTest()
-        {
-            ProductManager productManager = new ProductManager(new EfProductDal(), new CategoryManager(new EfCategoryDal()));
-
-            var result = productManager.GetProductDetails();
-
-            if (result.Success)
-            {
-                Console.WriteLine("{0,35} -- {1,15} -- {2,5} \n", "ProductName", "CategoryName", "Stock");
-                foreach (var product in result.Data)
-                {
-                    Console.WriteLine("{0,35} -- {1,15} -- {2,5}", product.ProductName, product.CategoryName, product.UnitsInStock);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-        }
-
-        private static void GetAllOrderByShipCityTest()
-        {
-            OrderManager orderManager = new OrderManager(new EfOrderDal());
-
-            Console.WriteLine("*************** Order List *********************");
-            foreach (var order in orderManager.GetAll())
-            {
-                Console.WriteLine(order.ShipCity);
-            }
-        }
-
-        private static void GetAllCategoryTest()
+        private static void CategoryTest()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-
-            Console.WriteLine("*************** Category List *********************");
             foreach (var category in categoryManager.GetAll().Data)
             {
                 Console.WriteLine(category.CategoryName);
             }
         }
 
-        private static void GetAllPersonelListTest()
+        private static void ProductTest()
         {
-            PersonelManager personelManager = new PersonelManager(new EfPersonelDal());
+            ProductManager productManager = new ProductManager(new EfProductDal()
+                , new CategoryManager(new EfCategoryDal()));
 
-            Console.WriteLine("{0,3} {1,10} {2,20}", "Id", "Personel Name", "Personel Surname");
-            foreach (var personel in personelManager.GetAll())
+            var result = productManager.GetProductDetails();
+
+            if (result.Success == true)
             {
-                Console.WriteLine("{0,3} {1,10} {2,16}", personel.Id, personel.Name, personel.Surname);
+                foreach (var product in result.Data)
+                {
+                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                }
             }
-        }
-
-        private static void GetAllProductTest()
-        {
-            //ProductManager productManager = new ProductManager(new InMemoryProductDal());
-            ProductManager
-                productManager =
-                    new ProductManager(new EfProductDal(), new CategoryManager(new EfCategoryDal())); //Sadece kullanimdaki teknolojiyi cagirmamiz yeterli
-
-            Console.WriteLine("{0,35} -- {1,5} -- {2,5}\n", "Product Name", "Price($)", "Stock");
-            foreach (var product in productManager.GetList().Data)
+            else
             {
-                Console.WriteLine("{0,35} -- {1,8} -- {2,5}", product.ProductName, product.UnitPrice,
-                    product.UnitsInStock);
+                Console.WriteLine(result.Message);
             }
-        }
 
-        private static void GetAllProductByCategoryIdTest(int categoryId)
-        {
-            ProductManager productManager = new ProductManager(new EfProductDal(), new CategoryManager(new EfCategoryDal()));
 
-            Console.WriteLine("{0} numarali categoriye ait ürün isimleri gelsin\n", categoryId);
-            foreach (var product in productManager.GetListByCategory(categoryId).Data)
-            {
-                Console.WriteLine(product.ProductName);
-            }
         }
     }
 }
