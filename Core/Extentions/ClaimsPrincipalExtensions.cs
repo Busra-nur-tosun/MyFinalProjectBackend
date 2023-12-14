@@ -3,7 +3,9 @@ using System.Linq;
 using System.Security.Claims;
 
 namespace Core.Extensions
-{
+{ // Bu sınıf, ClaimsPrincipal nesnesine çeşitli genişletme metotları ekleyerek,
+  // JWT ile ilgili işlemleri kolaylaştırmak için kullanılır.
+
     public static class ClaimsPrincipalExtensions
     {
         public static List<string> Claims(this ClaimsPrincipal claimsPrincipal, string claimType)

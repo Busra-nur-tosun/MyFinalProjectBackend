@@ -8,6 +8,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/*Constants(sabitler) klasörü, genellikle sabit değerleri 
+ * (constant values) içeren sınıfları barındıran bir klasördür. 
+ * Bu tür sabit değerler genellikle bir uygulama boyunca değişmeyen veya nadiren değişen değerlerdir.*/
 namespace Business.Constants
 {
     public static class Messages

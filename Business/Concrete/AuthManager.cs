@@ -13,6 +13,13 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
+    // Concrete klasörü ise soyutlamaların somut implementasyonlarını içerir
+    // ve bu örnekte kullanıcı kimlik doğrulama işlemlerini yönetir.
+
+    /// Kullanıcı kimlik doğrulama işlemlerini yöneten iş mantığı sınıfıdır.
+
+
+
     public class AuthManager : IAuthService
     {
         private IUserService _userService;

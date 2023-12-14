@@ -7,6 +7,8 @@ namespace Business.Concrete
 {
     public class PersonelManager : IPersonelService
     {
+        /// Personel işlemlerini yöneten iş mantığı sınıfıdır.
+
         private IPersonelDal _personelDal;
 
         public PersonelManager(IPersonelDal personelDal)

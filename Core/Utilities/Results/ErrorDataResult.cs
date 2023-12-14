@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Utilities.Results
-{
-     public  class ErrorDataResult<T> : DataResult<T>
+{// Bu sınıf, bir hata durumunun sonucunu temsil eden ve aynı zamanda bir veriyi içeren bir nesnedir.
+
+    public class ErrorDataResult<T> : DataResult<T>
     {
         public ErrorDataResult(T data, string message) : base(data, false, message)
         {
@@ -25,12 +26,6 @@ namespace Core.Utilities.Results
         {
 
         }
-
-
-
-
-
-
 
     }
 }

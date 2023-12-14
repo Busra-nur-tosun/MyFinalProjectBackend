@@ -7,8 +7,15 @@ using Core.Utilities.Interceptors;
 using Core.Utilities.IoC;
 using Microsoft.Extensions.DependencyInjection;
 
+/*Performance klasörü, uygulama seviyesinde performans ile ilgili aspect'leri 
+ * içeren bir klasördür. Performans ile ilgili aspect'ler, uygulama içindeki
+ * belirli metodların performansını ölçmek veya izlemek için kullanılır.
+
+*/
 namespace Core.Aspects.Autofac.Performance
-{
+{/// Belirli bir metodu çağırdıktan sonra geçen süreyi kontrol ederek belirli
+    //bir eşik değerini aşan durumları tespit etmek için kullanılan bir aspect sınıfı.
+
     public class PerformanceAspect : MethodInterception
     {
         private int _interval;

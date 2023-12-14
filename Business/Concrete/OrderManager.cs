@@ -6,7 +6,10 @@ using System.Collections.Generic;
 namespace Business.Concrete
 {
     public class OrderManager : IOrderService
+
     {
+        ///// Sipariş işlemlerini yöneten iş mantığı sınıfıdır.
+
         private IOrderDal _orderDal;
 
         public OrderManager(IOrderDal orderDal)

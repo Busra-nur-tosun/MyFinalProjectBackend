@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
+   /* ValidationRules klasörü genellikle FluentValidation veya başka bir doğrulama 
+    * kütüphanesini kullanarak uygulama seviyesinde kuralları içeren sınıfları barındırır.
+    * Bu klasördeki sınıflar, veri girişlerini doğrulamak ve iş kurallarını uygulamak için kullanılır.*/
     public class ProductValidator : AbstractValidator<Product>
-    {
+    { /// Product sınıfı için doğrulama kurallarını içeren sınıf.
+
         public ProductValidator()
         {
             RuleFor(p => p.ProductName).NotEmpty();
@@ -17,13 +21,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.UnitPrice).NotEmpty();
             RuleFor(p => p.UnitPrice).GreaterThan(0);
             RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(10).When(p => p.CategoryId == 1);
-          // RuleFor(p => p.ProductName).Must(StartWithA).WithMessage("Ürünler A harfi ile başlamalı");
-
+      
         }
 
-        //private bool StartWithA(string arg)
-        //{
-        //    return arg.StartsWith("A");
-        //}
     }
 }

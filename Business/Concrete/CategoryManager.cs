@@ -12,6 +12,9 @@ namespace Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
+
+        /// Kategori işlemlerini yöneten iş mantığı sınıfıdır.
+
         private ICategoryDal _categoryDal;
 
         public CategoryManager(ICategoryDal categoryDal)

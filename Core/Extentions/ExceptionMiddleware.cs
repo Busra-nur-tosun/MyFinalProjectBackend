@@ -8,7 +8,8 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 
 namespace Core.Extensions
-{
+{  /// Uygulama genelinde hataları ele almak için kullanılan Middleware sınıfı.
+
     public class ExceptionMiddleware
     {
         private RequestDelegate _next;

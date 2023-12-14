@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Utilities.Results
-{
+{// Bu sınıf, genel bir işlemin sonucunu temsil eden ve bu sonuca ilişkin temel bilgileri içeren bir yapıdır.
+
     public class Result : IResult
     {
         public Result(bool success, string message) : this(success)

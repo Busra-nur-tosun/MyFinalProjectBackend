@@ -11,7 +11,9 @@ using System.Diagnostics;
 using System.Text;
 
 namespace Core.DependencyResolvers
-{
+{// Bu metod, IServiceCollection nesnesine çeşitli servisleri eklemek için kullanılır.
+ // Servisler, .NET Core ve ASP.NET Core uygulamalarında bağımlılık enjeksiyonunu yapılandırmak için kullanılır.
+
     public class CoreModule : ICoreModule
     {
         public void Load(IServiceCollection serviceCollection)

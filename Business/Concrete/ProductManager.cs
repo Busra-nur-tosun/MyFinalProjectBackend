@@ -20,7 +20,7 @@ using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
-{
+{ /// Ürün işlemlerini yöneten iş mantığı sınıfıdır.
     public class ProductManager : IProductService
     {
         IProductDal _productDal;

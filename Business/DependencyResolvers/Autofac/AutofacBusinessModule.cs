@@ -14,11 +14,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/*DependencyResolvers klasörü, bir uygulamanın bağımlılıklarını
+ * yöneten modüllerin bulunduğu bir klasördür. Autofac altındaki
+ * AutofacBusinessModule, bu klasör içindeki bağımlılıkları çözen bir Autofac modülüdür.*/
 namespace Business.DependencyResolvers.Autofac
 {
      public  class AutofacBusinessModule:Module
     {
-        
+        /// Bağımlılıkları çözen Autofac modülü.
+
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();

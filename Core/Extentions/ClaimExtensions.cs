@@ -3,8 +3,16 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 
+/*Extensions klasörleri, genellikle genişletme metotlarını gruplamak
+ * için kullanılır. Bu sayede kodunuzu daha modüler hale getirebilir
+ * ve belirli işlevselliğe sahip genişletme metotlarını kolayca bulabilirsiniz. 
+ * Bu özel klasör, genişletme metotları içeren dosyaları gruplamak ve organize etmek için kullanılır.*/
+
 namespace Core.Extensions
 {
+    // Bu sınıf, Claims (JWT talepleri) koleksiyonuna çeşitli
+    // özel metotlar ekleyerek, JWT ile ilgili işlemleri kolaylaştırmak için kullanılır.
+
     public static class ClaimExtensions
     {
         public static void AddEmail(this ICollection<Claim> claims, string email)

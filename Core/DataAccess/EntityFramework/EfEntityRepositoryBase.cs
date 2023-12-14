@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.EntityFramework
 {
+    // Bu genel sınıf, Entity Framework kullanılarak genel CRUD (Create, Read, Update, Delete)
+    // operasyonlarını gerçekleştirmek için tasarlanmıştır.
+    // Genellikle her bir varlık (entity) tipi için ayrı bir repository sınıfı
+    // oluşturmak yerine bu genel sınıf kullanılarak tekrar kullanılabilirlik sağlanır.
+    
      public class EfEntityRepositoryBase<TEntity,TContext>:IEntityRepository<TEntity>
         where TEntity:class,IEntity,new()
         where TContext:DbContext,new()

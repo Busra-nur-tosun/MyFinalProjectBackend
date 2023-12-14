@@ -6,8 +6,9 @@ namespace Core.Extensions
 {
     internal class ErrorDetails
     {
-      
-            public string Message { get; set; }
+        // API'de döndürülecek hata detaylarını içeren sınıf.
+
+        public string Message { get; set; }
             public int StatusCode { get; set; }
         public IEnumerable<ValidationFailure> Errors { get; internal set; }
 

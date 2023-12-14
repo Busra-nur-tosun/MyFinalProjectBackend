@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Utilities.Results
-{
-     public class ErrorResult:Result
+{// Bu sınıf, bir hata durumunun sonucunu temsil eden ve sadece başarısız durumu içeren bir nesnedir.
+
+    public class ErrorResult:Result
     {
         public ErrorResult(string message):base (false,message)
         {

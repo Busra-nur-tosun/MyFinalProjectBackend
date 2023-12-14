@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Core.CrossCuttingConcerns.Validation
 {
-  
-        public static class ValidationTool
+    // Bu yardımcı sınıf, doğrulama işlemlerini gerçekleştirmek için kullanılır.
+    // .NET Core'un dahili doğrulama mekanizmasını (ValidationContext, ValidationResult, ValidationException) kullanarak
+    // belirtilen bir nesnenin doğruluğunu kontrol eder ve doğrulama sonucunu değerlendirir.
+
+    public static class ValidationTool
         {
             public static void Validate(IValidator validator, object entity)
             {

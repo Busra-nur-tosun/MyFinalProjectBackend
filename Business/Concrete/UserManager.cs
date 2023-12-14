@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Concrete
-{
+{ /// Kullanıcı işlemlerini yöneten iş mantığı sınıfıdır.
+
     public class UserManager : IUserService
     {
         IUserDal _userDal;

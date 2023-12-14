@@ -7,8 +7,14 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Text.RegularExpressions;
 using System.Linq;
 
+/*Bu genellikle bir modüler yapıya sahip projelerde kullanılır.
+ * Crosccutting klasörü, uygulamanın farklı katmanlarında kullanılacak 
+ * araçları ve servisleri içerir. Bu klasör içinde Microsoft klasörü,
+ * genellikle Microsoft tarafından sağlanan veya .NET Core'a özgü olan araçları içerir. */
 namespace Core.CrossCuttingConcerns.Caching.Microsoft
-{
+{// Bu sınıf, uygulama içinde geçici verileri bellek içinde önbellekleyerek
+ // hızlı erişim ve performans artışı sağlayan bir Memory Cache Manager'ı temsil eder.
+
     public class MemoryCacheManager : ICacheManager
     {
         IMemoryCache _memoryCache;

@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
+    /// Ürün işlemlerini yöneten servis arayüzüdür.
+    /// Bu arayüz, ürünlerin listesini getirme, belirli bir kategoriye ait ürünleri getirme,
+    /// belirli fiyat aralığındaki ürünleri getirme, ürün detaylarını getirme, belirli bir ürünün
+    /// detaylarını getirme, ürün ekleme, ürün güncelleme ve işlem sırasında bir test gerçekleştirme gibi
+    /// ürün işlemlerini gerçekleştirmek için kullanılır.
     public interface IProductService
     {
         IDataResult<List<Product>> GetAll();

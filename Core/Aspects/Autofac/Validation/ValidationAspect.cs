@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Core.Aspects.Autofac.Validation
 {
+    /*e, ValidationAspect sınıfı, belirli bir metodun çağrılmadan önce
+     * gelen parametreleri belirli doğrulama kurallarına tabi tutarak güvenlik
+     * ve doğrulama amacıyla kullanılır. Validation klasörü ise bu doğrulama işlemlerinin gerçekleştirildiği yerdir.*/
     public class ValidationAspect : MethodInterception
     {
         private Type _validatorType;

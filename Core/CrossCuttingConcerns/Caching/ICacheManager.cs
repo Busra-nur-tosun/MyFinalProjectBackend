@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Core.CrossCuttingConcerns.Caching
 {
-     public interface ICacheManager
+    // Bu arayüz, çeşitli uygulama katmanları arasında geçici verilerin önbelleğe alınması ve yönetilmesi için kullanılır.
+    // Genellikle, özellikle veritabanı erişimine olan sıkışmış durumları azaltmak ve uygulamanın performansını artırmak amacıyla kullanılır.
+
+    public interface ICacheManager
     {
         T Get<T>(string key);
         object Get(string key);
