@@ -1,6 +1,6 @@
 
 #*Proje Adı*#
-Bu proje, Engin Demiroğun yazılım geliştirme kampı  sonucunda C# + Angular ile yapılan kamp videoları sonucunda kurumsal ve n katmanlı mimari yazılarak  backend kısmı yazıldı.Solid prensiplerine,crud operasyonlarına ve clean koda özen gösterilerek local veri tabanı kullanılrark eticaret sitesi olabilmesi için amaçlanmıştır.
+Bu proje, Engin Demiroğun yazılım geliştirme kampı  sonucunda C# + Angular ile  n katmanlı mimari yazılarak  backend kısmı yazıldı.Solid prensiplerine,crud operasyonlarına ve clean koda özen gösterilerek local veri tabanı kullanılrark eticaret sitesi olabilmesi için amaçlanmıştır.
 
 #*Proje Yapısı ve Katmanlar*#
 Proje, şu ana katmanlardan oluşmaktadır:
